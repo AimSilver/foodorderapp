@@ -1,0 +1,26 @@
+# Use a base Node.js image
+FROM node:14
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install Angular CLI globally
+RUN npm install -g @angular/cli
+
+# Install frontend dependencies
+RUN npm install
+
+# Copy the rest of your frontend code
+COPY . .
+
+# Build the Angular app
+RUN ng build --prod
+
+# Expose the port your Angular app listens on (e.g., 4200)
+EXPOSE 4200
+
+# Start an HTTP server to serve the built Angular app
+CMD ["npx", "http-server", "dist/FOODMINE-MAIN"]
