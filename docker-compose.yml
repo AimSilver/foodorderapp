@@ -12,3 +12,12 @@ services:
       dockerfile: Dockerfile.frontend
     ports:
       - '4200:4200'
+
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: myuser
+      MONGO_INITDB_ROOT_PASSWORD: mypassword
+      MONGO_INITDB_DATABASE: orderdb
+    ports:
+      - '27017:27017'
