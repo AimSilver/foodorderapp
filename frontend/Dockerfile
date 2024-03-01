@@ -1,5 +1,5 @@
 # Use a base Node.js image
-FROM node:14
+FROM node:18.17
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -17,7 +17,7 @@ RUN npm install
 COPY . .
 
 # Build the Angular app
-RUN ng build --prod
+RUN ng build --configuration production
 
 # Expose the port your Angular app listens on (e.g., 4200)
 EXPOSE 4200
